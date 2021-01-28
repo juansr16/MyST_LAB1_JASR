@@ -1,12 +1,19 @@
+import pandas as pd
+import numpy as np
+import yfinance as yf
 
-"""
-# -- --------------------------------------------------------------------------------------------------- -- #
-# -- project: A SHORT DESCRIPTION OF THE PROJECT                                                         -- #
-# -- script: data.py : python script for data collection                                                 -- #
-# -- author: YOUR GITHUB USER NAME                                                                       -- #
-# -- license: GPL-3.0 License                                                                            -- #
-# -- repository: YOUR REPOSITORY URL                                                                     -- #
-# -- --------------------------------------------------------------------------------------------------- -- #
-"""
+# import data from csv file
+data = pd.read_csv('C:/Users/JASR/Documents/Semestre Primavera 2021/Microestructura y Sistemas de '
+                   'Trading/MyST_LAB1_JFME/files/naftrac_holdings_dec_2020/NAFTRAC_holdings/NAFTRAC_310118.csv',
+                   skiprows=[0, 1])
 
-dict_test = {'key_a': 'a', 'key_b': 'b'}
+# Get tickers
+tickers = data['Ticker'].tolist()
+for i in range(0, len(tickers)):
+    tickers[i] = tickers[i]+'.MX'
+
+# Get weighing
+weight = data['Peso (%)'].tolist()
+for i in range(0, len(weight)):
+    weight[i] = weight[i] / 100
+
