@@ -10,12 +10,15 @@
 
 import pandas as pd
 import data as dt
+import functions as ft
 
-# -- TEST 1 : 
-# verify that the script is being read
-print(dt.dict_test)
+# Definir datos del problema
+# Monto a invertir
+i= 1000000
+# Comision
+c= 0.00125
 
-# -- TEST 2 :
-# verify that installed pandas module works correctly
-df_dict_test = pd.DataFrame(dt.dict_test, index=[0, 1])
-print(df_dict_test)
+# Portafolio Inicial
+port = ft.port(i)
+
+
