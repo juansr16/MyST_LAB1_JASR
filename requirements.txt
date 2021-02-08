@@ -11,6 +11,8 @@ pandas>=1.1.0
 numpy>=1.19.1
 jupyter>=1.0.0
 yfinance>=0.1.55
+fire~=0.4.0
+math = 3.9.1
 
 pip~=20.2.1
 lxml~=4.6.2
