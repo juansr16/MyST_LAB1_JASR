@@ -1,21 +1,47 @@
-"""
-# -- --------------------------------------------------------------------------------------------------- -- #
-# -- project: A SHORT DESCRIPTION OF THE PROJECT                                                         -- #
-# -- script: main.py : python script with the main functionality                                         -- #
-# -- author: YOUR GITHUB USER NAME                                                                       -- #
-# -- license: GPL-3.0 License                                                                            -- #
-# -- repository: YOUR REPOSITORY URL                                                                     -- #
-# -- --------------------------------------------------------------------------------------------------- -- #
-"""
+"""# -- --------------------------------------------------------------------------------------------------- -- # # --
+project: Project made to show the profit of making a pasive investment.
+        -- # # -- script: main.py : python script with the main functionality
+        -- # # -- author: juansr16                                                                      -- # # --
+        license: GPL-3.0 License                                                                            -- # # --
+        repository: https://github.com/juansr16/MyST_LAB1_JFME
+                    -- # # --
+                    --------------------------------------------------------------------------------------------------- -- # """
 
-import pandas as pd
 import data as dt
+import functions as fn
 
-# -- TEST 1 : 
-# verify that the script is being read
-print(dt.dict_test)
+# Definir datos del problema
+# Monto a invertir
+i = 1000000
+# Comision
+c = 0.00125
 
-# -- TEST 2 :
-# verify that installed pandas module works correctly
-df_dict_test = pd.DataFrame(dt.dict_test, index=[0, 1])
-print(df_dict_test)
+# Obtener tickers
+tickers = fn.Tickers(dt.data)
+
+# Obtener pesos para el portafolio
+weight = fn.Weight(dt.data)
+
+# Despues de limpiar los datos descargar los precios
+precios = fn.Get_price(fn.tickers)
+
+# Funcion para generar el portafolio
+port = fn.Port(i)
+
+# Funcion para generar el valor total inicial del portafolio
+vi = fn.Port_in(port)
+
+# Funcion para obtener el cash de la operacion
+cash = fn.Cash(i, vi, c)
+
+# Funcion para obtener el Dataframe del capital de la operacion
+capital = fn.Capital(fn.precios, port, cash, vi)
+
+# Funcion para obtener los rendimientos de la transaccion
+rend = fn.Rendimiento(capital)
+
+# Funcion para obtener el rendimiento acumulado
+ra = fn.Rend_acum(rend)
+
+# Dataframe con los resultados de la operacion
+df_p = fn.df_pasiva(fn.precios, capital, rend, ra)
