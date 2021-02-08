@@ -45,4 +45,3 @@ ra = fn.Rend_acum(rend)
 
 # Dataframe con los resultados de la operacion
 df_p = fn.df_pasiva(fn.precios, capital, rend, ra)
-print(df_p)
